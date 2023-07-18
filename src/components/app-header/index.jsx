@@ -1,19 +1,17 @@
-import React, { memo } from "react";
-import { HeaderWrapper } from "./style";
+import React, { memo } from 'react'
+import HeaderCenter from './c-cpns/header-center'
+import HeaderLeft from './c-cpns/header-left'
+import HeaderRight from './c-cpns/header-right'
+import { HeaderWrapper } from './style'
 
-
-import HeaderCenter from "./c-cpns/header-center";
-import HeaderLeft from "./c-cpns/header-left";
-import HeaderRight from "./c-cpns/header-right";
-
-const AppHeader = memo(() => {
+const AppHeader = memo((props) => {
   return (
     <HeaderWrapper>
-      <HeaderLeft></HeaderLeft>
-      <HeaderCenter></HeaderCenter>
-      <HeaderRight></HeaderRight>
+      <HeaderLeft/>
+      <HeaderCenter/>
+      <HeaderRight/>
     </HeaderWrapper>
-  );
-});
+  )
+})
 
-export default AppHeader;
+export default AppHeader
