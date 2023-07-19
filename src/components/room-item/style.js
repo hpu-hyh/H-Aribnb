@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
   box-sizing: border-box;
-  width: 25%;
+  width: ${(props) => props.itemWidth};
   padding: 8px;
 
   .inner {
@@ -59,7 +59,7 @@ export const ItemWrapper = styled.div`
     .count {
       margin: 0 2px 0 4px;
     }
-   
+
     .MuiRating-icon {
       margin-right: -3px;
     }
