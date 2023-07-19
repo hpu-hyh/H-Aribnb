@@ -6,20 +6,30 @@ import { HomeWrapper } from "./style";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
+import HomeSectionV3 from "./c-cpns/home-section-v3";
+import HomeSectionV4 from "./c-cpns/home-section-v4";
 import { isEmptyO } from "../../utils";
 
 const Home = memo(() => {
   // 从redux中获得数据
-  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =
-    useSelector(
-      (state) => ({
-        goodPriceInfo: state.home.goodPriceInfo,
-        highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo,
-        recommendInfo: state.home.recommendInfo,
-      }),
-      shallowEqual
-    );
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    recommendInfo,
+    longforInfo,
+    plusInfo,
+  } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      recommendInfo: state.home.recommendInfo,
+      longforInfo: state.home.longforInfo,
+      plusInfo: state.home.plusInfo,
+    }),
+    shallowEqual
+  );
 
   // 数据转化
   // const [name, setName] = useState("成都");
@@ -46,8 +56,16 @@ const Home = memo(() => {
             <HomeSectionV2 infoData={recommendInfo} />
           )}
 
-          <HomeSectionV1 infoData={goodPriceInfo} />
-          <HomeSectionV1 infoData={highScoreInfo} />
+          {isEmptyO(longforInfo) && <HomeSectionV3 infoData={longforInfo} />}
+
+          {isEmptyO(goodPriceInfo) && (
+            <HomeSectionV1 infoData={goodPriceInfo} />
+          )}
+          {isEmptyO(highScoreInfo) && (
+            <HomeSectionV1 infoData={highScoreInfo} />
+          )}
+
+          {isEmptyO(plusInfo) && <HomeSectionV4 infoData={plusInfo} />}
         </div>
       </HomeWrapper>
     </div>
