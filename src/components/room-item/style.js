@@ -54,13 +54,13 @@ export const ItemWrapper = styled.div`
     align-items: center;
     font-size: 12px;
     font-weight: 600;
-    color: ${(props) => props.theme.color.textColor};
+    color: ${(props) => props.theme.color.parimaryColor};
 
     .count {
       margin: 0 2px 0 4px;
     }
-
-    .MuiRating-decimal {
+   
+    .MuiRating-icon {
       margin-right: -3px;
     }
   }

@@ -1,10 +1,11 @@
 import React, { memo, useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+
 import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import SectionHeadedr from "@/components/section-header";
-import RoomItem from "@/components/room-item";
+import SectionRooms from "@/components/section-rooms";
 
 const Home = memo(() => {
   // 从redux中获得数据
@@ -29,11 +30,7 @@ const Home = memo(() => {
         <div className="content">
           <div className="good-price">
             <SectionHeadedr title={goodPriceInfo.title} />
-            <ul className="room-list">
-              {goodPriceInfo.list?.slice(0,8).map((item) => {
-                return <RoomItem itemData={item} key={item.id} />;
-              })}
-            </ul>
+            <SectionRooms roomList={goodPriceInfo.list} />
           </div>
         </div>
       </HomeWrapper>
