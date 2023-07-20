@@ -1,12 +1,27 @@
-const initialState ={
+import * as actionTypes from "./constants";
 
-}
+const initialState = {
+  currentPage: 0,
+  roomlist: [],
+  totalCount: 0,
+  isLoading:false
+};
 
-function reducer(state=initialState , action){
-switch(action.type){
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case actionTypes.CHANGE_CURRENT_PAGE:
+      return { ...state, currentPage: action.currentPage };
+    case actionTypes.CHANGE_ROOM_LIST:
+      return { ...state, roomlist: action.roomlist };
+    case actionTypes.CHANGE_TOTAL_COUNT:
+      return { ...state, totalCount: action.totalCount };
+      case actionTypes.CHANGE_IS_LOADING:
+        return { ...state, isLoading: action.isLoading };
     default:
-        return state
-}
+      return state;
+  }
 }
 
-export default reducer
+export default reducer;
+
+//
