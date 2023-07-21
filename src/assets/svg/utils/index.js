@@ -9,6 +9,6 @@ function styleStrToObj(str){
   return obj;
 }
 
-export {
+export  {
   styleStrToObj
 }

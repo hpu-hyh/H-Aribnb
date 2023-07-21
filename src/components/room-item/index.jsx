@@ -22,7 +22,7 @@ if(itemClick) itemClick(itemData)
 
 
 
-  function clickHandle(isRight = true) {
+  function clickHandle(isRight = true,event) {
     isRight ? silderRef.current.next() : silderRef.current.prev();
 
     let newIndex = isRight ? selectIndex + 1 : selectIndex - 1;
@@ -30,6 +30,9 @@ if(itemClick) itemClick(itemData)
     if (newIndex < 0) newIndex = length - 1;
     if (newIndex > length - 1) newIndex = 0;
     setSelectIndex(newIndex);
+
+    // 阻止事件冒泡
+    event.stopPropagation()
   }
 
   const pictureElement = (
@@ -41,10 +44,10 @@ if(itemClick) itemClick(itemData)
   const silderElement = (
     <div className="swiper">
       <div className="control">
-        <div className="btn left" onClick={(e) => clickHandle(false)}>
+        <div className="btn left" onClick={(e) => clickHandle(false,e)}>
           <IconArrowLeft width="30" height="40"></IconArrowLeft>
         </div>
-        <div className="btn right" onClick={(e) => clickHandle(true)}>
+        <div className="btn right" onClick={(e) => clickHandle(true,e)}>
           <IconArrowRight width="30" height="40"></IconArrowRight>
         </div>
       </div>

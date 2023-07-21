@@ -1,11 +1,17 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { DetailWarpper } from "./style";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
+import PictureBrowser from "@/base-ui/picture-browser";
 
 const DetailPictures = memo(() => {
-  const { detailInfo } = useSelector((state) => ({
-    detailInfo: state.detail.detailInfo,
-  }));
+  const [showBrowser, setShowBrowser] = useState(false);
+
+  const { detailInfo } = useSelector(
+    (state) => ({
+      detailInfo: state.detail.detailInfo,
+    }),
+    shallowEqual
+  );
   return (
     <DetailWarpper>
       <div className="pictures">
@@ -26,8 +32,16 @@ const DetailPictures = memo(() => {
           })}
         </div>
       </div>
+
+      <div className="show-btn" onClick={(e) => setShowBrowser(true)}>
+        显示照片
+      </div>
+
+      {showBrowser && <PictureBrowser pictureUrls={detailInfo.picture_urls} setClickClose={e=>setShowBrowser(false)}></PictureBrowser>}
     </DetailWarpper>
   );
 });
+
+
 
 export default DetailPictures;
